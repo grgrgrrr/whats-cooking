@@ -23,7 +23,7 @@ n <- 6713
 #f <- matrix(data =0, nrow = m, ncol = n)
 
 
-
+#создание огромной матрицы объектов-признаков
 for (i in 1:m){
   f <- rep (0, n)
   ingr <- d[i][[1]]$ingredients
