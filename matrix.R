@@ -29,7 +29,7 @@ for (i in 1:m){
   ingr <- d[i][[1]]$ingredients
   for (k in ingr)
     f[map[[k]]] <- 1
-  write(f, file = "table.csv", ncolumns = n, append = TRUE, sep = " ");
+  write(f, file = "matrix.csv", ncolumns = n, append = TRUE, sep = " ");
   print(i / m * 100)
 }
 
