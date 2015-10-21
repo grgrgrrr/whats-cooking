@@ -34,6 +34,6 @@ for (i in 1:count_cuisines)
 }
 
 #гистограмма кол-ва рецептов из каждой кухни
-#write(name_cuisines, file = "names.csv")
+write(name_cuisines, file = "names.csv")
 dat <- data.frame(x=c(1:20), y=c(plot_vector))
 barplot(dat$y, names.arg=c(name_cuisines), ylim=c(0,8000), xlim=c(0,30), las=2, cex.axis=1, cex.names=0.6)
