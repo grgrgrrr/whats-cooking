@@ -1,10 +1,10 @@
 library("rjson")
-#данные
+#РґР°РЅРЅС‹Рµ
 json_file <- "train.json"
 train_data <- fromJSON(file=json_file, method='C')
 count_recipes <- length(train_data)
 
-#ассоциативный массив для подсчета кол-ва рецептов одной кухни
+#Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ РґР»СЏ РїРѕРґСЃС‡РµС‚Р° РєРѕР»-РІР° СЂРµС†РµРїС‚РѕРІ РѕРґРЅРѕР№ РєСѓС…РЅРё
 map_cuisines <- new.env(hash = T, parent = emptyenv()) 
 name_cuisines <- vector(length = 20)
 j <- 1
@@ -23,7 +23,7 @@ for (i in 1:count_recipes)
   }
 }
 
-#записываем значения в вектор для отрисовки
+#Р·Р°РїРёСЃС‹РІР°РµРј Р·РЅР°С‡РµРЅРёСЏ РІ РІРµРєС‚РѕСЂ РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё
 count_cuisines <- length(map_cuisines)
 plot_vector <- rep(0, count_cuisines) 
 cuisines <- as.list(map_cuisines)
@@ -32,7 +32,7 @@ for (i in 1:count_cuisines)
   plot_vector[i] <- cuisines[[i]]
 }
 
-#гистограмма кол-ва рецептов из каждой кухни
+#РіРёСЃС‚РѕРіСЂР°РјРјР° РєРѕР»-РІР° СЂРµС†РµРїС‚РѕРІ РёР· РєР°Р¶РґРѕР№ РєСѓС…РЅРё
 #write(name_cuisines, file = "names.csv")
 dat <- data.frame(x=c(1:20), y=c(plot_vector))
 barplot(dat$y, names.arg=c(name_cuisines), ylim=c(0,8000), xlim=c(0,30), las=2, cex.axis=1, cex.names=0.6)

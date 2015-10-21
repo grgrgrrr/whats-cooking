@@ -1,6 +1,6 @@
 #install.packages("rjson")
 library("rjson")
-#данные
+#РґР°РЅРЅС‹Рµ
 json_file <- "train.json"
 d <- fromJSON(file=json_file, method='C')
 m <- 39774
@@ -23,7 +23,7 @@ n <- 6713
 #f <- matrix(data =0, nrow = m, ncol = n)
 
 
-#создание огромной матрицы объектов-признаков
+#СЃРѕР·РґР°РЅРёРµ РѕРіСЂРѕРјРЅРѕР№ РјР°С‚СЂРёС†С‹ РѕР±СЉРµРєС‚РѕРІ-РїСЂРёР·РЅР°РєРѕРІ
 for (i in 1:m){
   f <- rep (0, n)
   ingr <- d[i][[1]]$ingredients

@@ -1,21 +1,21 @@
 library("rjson")
-#данные
+#РґР°РЅРЅС‹Рµ
 json_file <- "train.json"
 train_data <- fromJSON(file=json_file, method='C')
 
 count_cuisines <- 20
 
-#гистограммы кол-ва ингридиентов в  каждой кухне
+#РіРёСЃС‚РѕРіСЂР°РјРјС‹ РєРѕР»-РІР° РёРЅРіСЂРёРґРёРµРЅС‚РѕРІ РІ  РєР°Р¶РґРѕР№ РєСѓС…РЅРµ
 for (i in 1:count_cuisines)
 {
   #name_ingridients <- vector(length = )
   curr_cuisine <- name_cuisines[i]
-  #те рецепты, которые принадлежат текущей кухне
+  #С‚Рµ СЂРµС†РµРїС‚С‹, РєРѕС‚РѕСЂС‹Рµ РїСЂРёРЅР°РґР»РµР¶Р°С‚ С‚РµРєСѓС‰РµР№ РєСѓС…РЅРµ
   cond <- lapply(train_data, function(x) x$cuisine == curr_cuisine)
   curr_receipes <- train_data[unlist(cond)]
   count_curr_receipes <- length(curr_receipes)
   
-  #ассоциативный массив для ингридиентов
+  #Р°СЃСЃРѕС†РёР°С‚РёРІРЅС‹Р№ РјР°СЃСЃРёРІ РґР»СЏ РёРЅРіСЂРёРґРёРµРЅС‚РѕРІ
   map_ingridients <- new.env(hash = T, parent = emptyenv())
   
   for (i in 1:count_curr_receipes){
@@ -31,7 +31,7 @@ for (i in 1:count_cuisines)
       }
   }
   
-  #записываем значения в вектор для отрисовки
+  #Р·Р°РїРёСЃС‹РІР°РµРј Р·РЅР°С‡РµРЅРёСЏ РІ РІРµРєС‚РѕСЂ РґР»СЏ РѕС‚СЂРёСЃРѕРІРєРё
   count_ingridients<- length(map_ingridients)
   plot_vector <- rep(0, count_ingridients) 
   ingridients <- as.list(map_ingridients)
