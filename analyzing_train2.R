@@ -1,4 +1,3 @@
-#скрипт для создания 20 гистограмм(20 кухонь) по количеству используемых в каждой кухне ингридиентов
 library("rjson")
 #данные
 json_file <- "train.json"
@@ -17,6 +16,7 @@ for (i in 1:count_cuisines)
   count_curr_receipes <- length(curr_receipes)
   
   #ассоциативный массив для ингридиентов
+  
   map_ingridients <- new.env(hash = T, parent = emptyenv())
   
   for (i in 1:count_curr_receipes){
