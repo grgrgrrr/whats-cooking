@@ -25,11 +25,12 @@ n <- 6713
 
 #создание огромной матрицы объектов-признаков
 for (i in 1:m){
-  f <- rep (0, n)
+  f <- rep (0, n + 1)
   ingr <- d[i][[1]]$ingredients
   for (k in ingr)
     f[map[[k]]] <- 1
-  write(f, file = "matrix.csv", ncolumns = n, append = TRUE, sep = " ");
+  f[n+1]=d[i][[1]]$cuisine
+  write(f, file = "matrix.csv", ncolumns = n + 1, append = TRUE, sep = " ");
   print(i / m * 100)
 }
 
