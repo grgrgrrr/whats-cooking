@@ -1,11 +1,9 @@
-#скрипт для создания гистограммы по количеству рецептов из каждой кухни
 library("rjson")
 #данные
 json_file <- "train.json"
 train_data <- fromJSON(file=json_file, method='C')
 count_recipes <- length(train_data)
 
-#ассоциативный массив для подсчета кол-ва рецептов одной кухни
 map_cuisines <- new.env(hash = T, parent = emptyenv()) 
 name_cuisines <- vector(length = 20)
 j <- 1
@@ -24,7 +22,6 @@ for (i in 1:count_recipes)
   }
 }
 
-#записываем значения в вектор для отрисовки
 count_cuisines <- length(map_cuisines)
 plot_vector <- rep(0, count_cuisines) 
 cuisines <- as.list(map_cuisines)

@@ -5,12 +5,9 @@ train_data <- fromJSON(file=json_file, method='C')
 name_cuisines <- read.table('names.csv', header=TRUE)
 count_cuisines <- 20
 
-#гистограммы кол-ва ингридиентов в  каждой кухне
 for (i in 1:count_cuisines)
 {
-  #name_ingridients <- vector(length = )
   curr_cuisine <- name_cuisines[i, 'country']
-  #те рецепты, которые принадлежат текущей кухне
   cond <- lapply(train_data, function(x) x$cuisine == curr_cuisine)
   curr_receipes <- train_data[unlist(cond)]
   count_curr_receipes <- length(curr_receipes)
